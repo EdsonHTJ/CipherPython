@@ -1,12 +1,21 @@
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 
+nonce = 0
 
 def en_AES(st,k):
+    global nonce
     key = (bytes(k,'utf-8'))
     cipher = AES.new(key, AES.MODE_EAX)
+    nonce = cipher.nonce
     ciphertext, tag = cipher.encrypt_and_digest(bytes(st,'utf-8'))
-    return ciphertext
+    return str(ciphertext)
+
+def dec_AES(st,k):
+    key = (bytes(k,'utf-8'))
+    cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
+    plaintext = cipher.decrypt(st)
+    return str(plaintext)
 
 def en_cesar(st,k):
     st_cesar = []
@@ -77,9 +86,3 @@ def dec_xor(arr,k):
             hexi=int(hexs, 16)
             xarr.append(chr(hexi^ord(k[x%len(k)])))
         return ''.join(xarr)
-
-a= input('Palavra: ')
-b= input('Chave: ')
-
-print(en_AES(a,b))
-
