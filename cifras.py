@@ -1,7 +1,47 @@
 from Crypto.Cipher import AES,DES3
 from Crypto import Random
+import sDES
 
 nonce = 0
+
+def en_sDES(st,k):
+    try:
+        Ct=[]
+        Bst = bytes(st,'utf-8')
+        for element in Bst:
+            arr = str(bin(element))[2:]
+            while len(arr)<8:
+                arr= '0'+arr
+            hnum = str(hex(int('0b'+sDES.enc_sDES_8b(arr,k),2)))[2:]
+            if(len(hnum)<2):
+                hnum='0'+hnum
+            Ct.append(hnum)
+
+        
+        return ''.join(Ct)
+    except:
+        return 'Chave Invalida'
+
+
+def dec_sDES(st,k):
+    Pt=[]
+    for x in range(int(len(st)/2)):
+        hexs="0x"+st[2*x]+st[2*x+1]
+        bini=str(bin(int(hexs, 16)))[2:]
+        while len(bini)<8:
+            bini = '0'+bini
+        Pt.append(chr(int('0b'+sDES.dec_sDES_8b(bini,k),2)))
+    return ''.join(Pt)
+    
+
+
+
+        
+        
+
+
+
+
 
 def en_DES(st,k):
     try:
@@ -144,10 +184,10 @@ def dec_xor(arr,k):
             xarr.append(chr(hexi^ord(k[x%len(k)])))
         return ''.join(xarr)
 
-a=input('Palavra: ')
-b="aaaavvvvccccdddd"
+a=input('Esdjuwfh: ')
+b="1010101010"
 
-a = en_DES(a,b)
+a = en_sDES(a,b)
 print(a)
-a = dec_DES(a,b)
+a = dec_sDES(a,b)
 print(a)
