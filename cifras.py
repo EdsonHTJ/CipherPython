@@ -4,10 +4,10 @@ from Crypto import Random
 nonce = 0
 iv = Random.new().read(DES3.block_size)
 def en_DES(st,k):
-    #try:
+    try:
         key = bytes(k,'utf-8')
         #key = b'Sixteen byte key'
-        cipher = DES3.new(key, DES3.MODE_CBC,iv)
+        cipher = DES3.new(key, DES3.MODE_OFB,iv)
         ciphertext = cipher.encrypt(bytes(st,'utf-8'))
         Ct=[]
         for element in ciphertext:
@@ -17,11 +17,12 @@ def en_DES(st,k):
                     hnum='0'+hnum
             Ct.append(hnum)
         return ''.join(Ct)
-    #except:
+    except:
         return 'Chave Invalida'
 
+
 def dec_DES(st,k):
-    #try:
+    try:
         toDec=[]
         for x in range(int(len(st)/2)):
             hexs="0x"+st[2*x]+st[2*x+1]
@@ -29,11 +30,11 @@ def dec_DES(st,k):
             toDec.append(hexi)
         key = bytes(k,'utf-8')
         #key = b'Sixteen byte key'
-        cipher = DES3.new(key, DES3.MODE_CBC,iv)
+        cipher = DES3.new(key, DES3.MODE_OFB,iv)
         plaintext = cipher.decrypt(bytes(toDec))
         return (str(plaintext))[2:len(str(plaintext))-1]
         #return(plaintext)
-    #except:
+    except:
         return 'Chave Invalida'
 
 
