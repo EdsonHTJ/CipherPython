@@ -18,7 +18,6 @@ class handlers():
         obj.errorCloseButton.clicked.connect(lambda: obj.frame_popuperror.hide())
         obj.frame_popuperror.hide()
 
-
     def Cript(obj):
         selecionado = str(obj.comboBoxAlgoritmo.currentText())
         txtPadrao = obj.caixaTextoPadrao.toPlainText()
@@ -53,6 +52,7 @@ class handlers():
                 obj.caixaTextoCript.setPlainText(Ct)
             except:
                 obj.frame_popuperror.show()
+
     def Decript(obj):
         selecionado = str(obj.comboBoxAlgoritmo.currentText())
         txtCript = obj.caixaTextoCript.toPlainText()
