@@ -2,8 +2,6 @@ from Crypto.Cipher import AES,DES3
 from Crypto import Random
 import sDES
 
-nonce = 0
-
 def en_sDES(st,k):
     Ct=[]
     Bst = bytes(st,'utf-8')
@@ -52,11 +50,11 @@ def dec_DES(st,k):
     plaintext = cipher.decrypt(bytes(msg))
     return (str(plaintext))[2:len(str(plaintext))-1]
 def en_AES(st,k):
-    global nonce
     key = (bytes(k,'utf-8'))
     cipher = AES.new(key, AES.MODE_EAX)
     nonce = cipher.nonce
     ciphertext, tag = cipher.encrypt_and_digest(bytes(st,'utf-8'))
+    ciphertext = nonce + ciphertext
     Ct=[]
     for element in ciphertext:
         hx = str(hex(element))
@@ -72,8 +70,10 @@ def dec_AES(st,k):
         hexi=int(hexs, 16)
         toDec.append(hexi)
     key = (bytes(k,'utf-8'))
-    cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
-    plaintext = cipher.decrypt(bytes(toDec))
+    nonce = toDec[:16]
+    msg = toDec[16:]
+    cipher = AES.new(key, AES.MODE_EAX, nonce=bytes(nonce))
+    plaintext = cipher.decrypt(bytes(msg))
     return (str(plaintext))[2:len(str(plaintext))-1]
 def en_cesar(st,k):
     st_cesar = []
@@ -136,3 +136,4 @@ def dec_xor(arr,k):
             hexi=int(hexs, 16)
             xarr.append(chr(hexi^ord(k[x%len(k)])))
         return ''.join(xarr)
+
