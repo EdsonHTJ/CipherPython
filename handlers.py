@@ -83,44 +83,137 @@ class handlers():
                 obj.frame_popuperror.show()
 
     def CriptArquivo(obj):
-        
+
         selecionado = str(obj.comboBoxAlgoritmo.currentText())
+        txtKey = obj.caixaTextoChave.toPlainText()
 
         if selecionado == 'Cesar':
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.en_cesar(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
         elif selecionado == 'XOR':
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.en_xor(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
         elif selecionado == "S-DES":
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.en_sDES(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
         elif selecionado == "DES":
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.en_DES(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
+
         elif selecionado == "AES":
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.en_AES(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
 
     def DecriptArquivo(obj):
 
         selecionado = str(obj.comboBoxAlgoritmo.currentText())
+        txtKey = obj.caixaTextoChave.toPlainText()
 
         if selecionado == 'Cesar':
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.dec_cesar(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
         elif selecionado == 'XOR':
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.dec_xor(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
         elif selecionado == "S-DES":
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.dec_sDES(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
         elif selecionado == "DES":
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.dec_DES(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
         elif selecionado == "AES":
             Ct = handlers.SelecionarArquivo(obj)
-            print(Ct)
+            try:
+                f = open(Ct,'rb').read()
+                fcp = cifras.dec_AES(f,txtKey,1)
+                nome_arquivo = Ct[len(Ct)-Ct[::-1].index("/"):]
+                x = nome_arquivo.index(".")
+                ext = nome_arquivo[x:]
+                nome_arquivo = nome_arquivo[:x]
+                open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+            except:
+                obj.frame_popuperror.show()
 
 
     def SelecionarArquivo(obj):
