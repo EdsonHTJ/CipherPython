@@ -20,32 +20,37 @@ class handlers():
             try:
                 Ct = cifras.en_cesar(txtPadrao,txtKey)
                 obj.caixaTextoCript.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "XOR":
             try:
                 Ct = cifras.en_xor(txtPadrao,txtKey)
                 obj.caixaTextoCript.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "S-DES":
             try:
                 Ct = cifras.en_sDES(txtPadrao,txtKey)
                 obj.caixaTextoCript.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "DES":
             try:
                 Ct = cifras.en_DES(txtPadrao,txtKey)
                 obj.caixaTextoCript.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "AES":
             try:
                 Ct = cifras.en_AES(txtPadrao,txtKey)
                 obj.caixaTextoCript.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
 
     def Decript(obj):
         selecionado = str(obj.comboBoxAlgoritmo.currentText())
@@ -55,32 +60,37 @@ class handlers():
             try:
                 Ct = cifras.dec_cesar(txtCript,txtKey)
                 obj.caixaTextoPadrao.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == 'XOR':
             try:
                 Ct = cifras.dec_xor(txtCript,txtKey)
                 obj.caixaTextoPadrao.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "S-DES":
             try:
                 Ct = cifras.dec_sDES(txtCript,txtKey)
                 obj.caixaTextoPadrao.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "DES":
             try:
                 Ct = cifras.dec_DES(txtCript,txtKey)
                 obj.caixaTextoPadrao.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "AES":
             try:
                 Ct = cifras.dec_AES(txtCript,txtKey)
                 obj.caixaTextoPadrao.setPlainText(Ct)
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
 
     def CriptArquivo(obj):
 
@@ -97,8 +107,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == 'XOR':
             Ct = handlers.SelecionarArquivo(obj)
             try:
@@ -109,8 +120,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "S-DES":
             Ct = handlers.SelecionarArquivo(obj)
             try:
@@ -121,8 +133,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "DES":
             Ct = handlers.SelecionarArquivo(obj)
             try:
@@ -133,8 +146,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
 
         elif selecionado == "AES":
             Ct = handlers.SelecionarArquivo(obj)
@@ -146,8 +160,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_cript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
 
     def DecriptArquivo(obj):
 
@@ -164,8 +179,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == 'XOR':
             Ct = handlers.SelecionarArquivo(obj)
             try:
@@ -176,8 +192,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "S-DES":
             Ct = handlers.SelecionarArquivo(obj)
             try:
@@ -188,8 +205,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "DES":
             Ct = handlers.SelecionarArquivo(obj)
             try:
@@ -200,8 +218,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
         elif selecionado == "AES":
             Ct = handlers.SelecionarArquivo(obj)
             try:
@@ -212,8 +231,9 @@ class handlers():
                 ext = nome_arquivo[x:]
                 nome_arquivo = nome_arquivo[:x]
                 open("deploy/"+nome_arquivo+"_decript"+ext,'wb').write(bytes(fcp))
+                handlers.sucesso(obj)
             except:
-                obj.frame_popuperror.show()
+                handlers.erro(obj)
 
 
     def SelecionarArquivo(obj):
@@ -225,4 +245,26 @@ class handlers():
             nome_tratado = str(file_name)[2:(len(str(file_name))-2)]
             return nome_tratado
 
+    def sucesso(obj):
+        obj.frame_popuperror.setStyleSheet("background-color: rgb(0, 255, 127);")
+        obj.errorCloseButton.setStyleSheet("QPushButton{\n"
+"font: 75 8pt \"Verdana\";\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgb(0, 205, 147);\n"
+"    color: rgb(0, 0, 0);\n"
+"}")
+        obj.label_error.setText("         SUCESSO")
+        obj.frame_popuperror.show()
+    def erro(obj):
+        obj.frame_popuperror.setStyleSheet("background-color: rgb(217, 103, 105);")
+        obj.errorCloseButton.setStyleSheet("QPushButton{\n"
+"font: 75 8pt \"Verdana\";\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgb(122, 69, 70);\n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        obj.label_error.setText("ERRO INESPERADO")
+        obj.frame_popuperror.show()
 #LEMBRAR DE ADICIONAR NA UI -> handlers.handlers.setupHandlers(self)
